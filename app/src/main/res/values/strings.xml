@@ -13,4 +13,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="splashscreentext">Welcome to the Shelter Volunteer App!</string>
+    <string name="stock_image">stock image</string>
 </resources>

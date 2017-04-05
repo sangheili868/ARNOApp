@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="UseCompoundDrawables">
+
+    <TextView
+        android:text="@string/splashscreentext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        android:paddingTop="50dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/stock_dog"
+        android:id="@+id/imageView"
+        android:contentDescription="@string/stock_image"
+        android:paddingTop="50dp" />
+</LinearLayout>
