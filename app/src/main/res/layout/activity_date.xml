@@ -1,57 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="Month Day"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/date_monthday"
-        android:textAlignment="center"
-        android:textSize="48sp"
-        android:textStyle="normal|bold" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp" />
-
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="9:00AM-12:00PM"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/date_morningtimes"
-            android:textAlignment="textStart"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:textSize="24sp" />
-
-        <TextView
-            android:text="# Volunteers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/date_morningvolunteers"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:textSize="24sp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
-            android:text="Sign Up for Morning Shift"
+            android:id="@+id/date_backbutton"
+            style="@style/buttonThemeLight"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/date_back"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/date_monthday"
+            style="@style/GoldTextTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/date_morningbutton"
-            android:layout_margin="10dp"
-            android:textSize="20sp" />
+            android:layout_weight="1"
+            android:text="@string/date_month_day"
+            android:textAlignment="center"
+            android:textSize="48sp"
+            android:textStyle="normal|bold" />
     </LinearLayout>
 
     <Space
@@ -60,12 +36,61 @@
         android:layout_margin="10dp" />
 
     <LinearLayout
+        style="@style/ChangingLayoutTheme"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/date_morninglayout">
 
         <TextView
-            android:text="6:00PM-9:00PM"
+            android:text="@string/date_morningtimes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/date_morningtimes"
+            android:textAlignment="textStart"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            style="@style/DarkTextTheme"/>
+
+        <TextView
+            android:text="@string/date_numvolunteers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/date_morningvolunteers"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            style="@style/DarkTextTheme"/>
+
+        <Button
+            android:text="@string/date_morningbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/date_morningbutton"
+            android:layout_margin="10dp"
+            android:textSize="20sp"
+            style="@style/buttonThemeDark"/>
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp" />
+
+    <LinearLayout
+        style="@style/ChangingLayoutTheme"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/date_eveninglayout">
+
+        <TextView
+            android:text="@string/date_eveningtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/date_eveningtimes"
@@ -73,10 +98,11 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            style="@style/DarkTextTheme"/>
 
         <TextView
-            android:text="# Volunteers"
+            android:text="@string/date_numvolunteers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/date_eveningvolunteers"
@@ -84,15 +110,17 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            style="@style/DarkTextTheme"/>
 
         <Button
-            android:text="Sign Up for Evening Shift"
+            android:text="@string/date_eveningbtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/date_eveningbutton"
             android:layout_margin="10dp"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            style="@style/buttonThemeDark"/>
     </LinearLayout>
 
 </LinearLayout>

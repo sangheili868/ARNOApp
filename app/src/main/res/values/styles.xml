@@ -1,11 +1,44 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="SuperMaterialTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/gold</item>
+        <item name="windowActionBar">false</item>
     </style>
+
+    <style name="MyMaterialTheme" parent="SuperMaterialTheme">
+        <item name="android:windowBackground">@color/darkblue</item>
+        <item name="android:colorBackground">@color/darkblue</item>
+        <item name="android:textColor">@color/gold</item>
+        <item name="android:textColorSecondary">@color/darkblue</item>
+        <item name="colorButtonNormal">@color/black</item>
+        <item name="android:itemBackground">@color/gold</item>
+        <item name="android:itemTextAppearance">@color/darkblue</item>
+        <item name="android:buttonStyle">@style/buttonThemeDark</item>
+    </style>
+
+    <style name="GoldTextTheme" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">@color/gold</item>
+        <item name="android:textColor">@color/darkblue</item>
+    </style>
+
+    <style name="DarkTextTheme" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/darkblue</item>
+    </style>
+
+    <style name="ChangingLayoutTheme" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textViewStyle">@style/DarkTextTheme</item>
+    </style>
+
+    <style name="buttonThemeDark" parent="android:style/Widget.Button">
+        <item name="android:background">@color/darkblue</item>
+        <item name="android:textColor">@color/gold</item>
+    </style>
+
+    <style name="buttonThemeLight" parent="android:style/Widget.Button">
+        <item name="android:background">@color/gold</item>
+        <item name="android:textColor">@color/darkblue</item>
+    </style>
+
 
 </resources>

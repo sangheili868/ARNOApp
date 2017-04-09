@@ -15,4 +15,11 @@
     </string>
     <string name="splashscreentext">Welcome to the Shelter Volunteer App!</string>
     <string name="stock_image">stock image</string>
+    <string name="date_back"><![CDATA[<]]></string>
+    <string name="date_month_day">Month Day</string>
+    <string name="date_morningtimes">9:00AM-12:00PM</string>
+    <string name="date_numvolunteers"># Volunteers</string>
+    <string name="date_morningbtn">Sign Up for Morning Shift</string>
+    <string name="date_eveningtime">6:00PM-9:00PM</string>
+    <string name="date_eveningbtn">Sign Up for Evening Shift</string>
 </resources>
