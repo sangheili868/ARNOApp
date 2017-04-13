@@ -13,7 +13,7 @@ public class User {
     private int userID;
     private String username;
     private String password;
-    private Vector<RegularShift> regShifts;
+    private Vector<Shift> shifts;
     private Vector<ExceptionShift> excShifts;
 
     public User(int userID, String username, String password) {
@@ -22,20 +22,22 @@ public class User {
         this.password = password;
     }
 
-    public void addRegShift(RegularShift rs)
+    public void addShift(Shift shift)
     {
-        regShifts.add(rs);
+        shifts.add(shift);
     }
-    public boolean deleteRegShift(RegularShift rs) {
-        return regShifts.remove(rs);
+    public void setShifts(Vector<Shift> shifts) {this.shifts = shifts;}
+    public boolean deleteShift(Shift shift) {
+        return shifts.remove(shift);
     }
-    public Vector<RegularShift> getRegShifts() {return regShifts;}
-    public void clearRegShifts() {regShifts.clear();}
+    public Vector<Shift> getShifts() {return shifts;}
+    public void clearShifts() {shifts.clear();}
 
     public void addExcShift(ExceptionShift es)
     {
         excShifts.add(es);
     }
+    public void setExcShifts(Vector<ExceptionShift> es) {this.excShifts = es;}
     public boolean deleteExcShift(ExceptionShift es) {
         return excShifts.remove(es);
     }
@@ -49,8 +51,8 @@ public class User {
         for (ExceptionShift es: this.excShifts)
             if(es.getDate().equals(date) && es.getTime().equals(time))
                 return es.isGoing();
-        for (RegularShift rs: this.regShifts)
-            if(rs.getDay().equals(day) && rs.getTime().equals(time)) return true;
+        for (Shift shift: this.shifts)
+            if(shift.getDay().equals(day) && shift.getTime().equals(time)) return true;
         return false;
     }
     public boolean checkPassword(String attemptpw) {

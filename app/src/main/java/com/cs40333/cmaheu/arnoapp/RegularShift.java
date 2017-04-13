@@ -1,8 +1,9 @@
 package com.cs40333.cmaheu.arnoapp;
 
-/**
+/*
  * Created by chris_000 on 4/12/2017.
- */
+ * NO LONGER IN USE
+
 
 public class RegularShift extends Shift {
     String day;
@@ -21,3 +22,4 @@ public class RegularShift extends Shift {
     }
 
 }
+*/

@@ -1,5 +1,6 @@
 package com.cs40333.cmaheu.arnoapp;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -7,14 +8,13 @@ import java.util.Date;
  */
 
 public class ExceptionShift extends Shift {
-    Date date;
-    boolean going;
+    private Date date;
+    private boolean going;
 
 
     public ExceptionShift(Date date, String time, int userID, boolean going) {
+        super((new SimpleDateFormat("EEEE")).format(date),time,userID);
         this.date = date;
-        this.time = time;
-        this.userID = userID;
         this.going  = going;
     }
 
