@@ -10,10 +10,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Vector;
 
 /**
@@ -31,6 +31,9 @@ public class FBHelper {
         mydb = FirebaseDatabase.getInstance().getReference();
     }
 
+    public void clearUsers() {
+        mydb.child("users").removeValue();
+    }
     public String getDayOfWeek(Date mydate) {
         // Given a Date, returns the day of week
         // Ex: Given 5/1/2017, returns "Monday"
@@ -47,8 +50,36 @@ public class FBHelper {
         mydb.child("users").child(user.getFBUser().getUid()).child("shifts").child(shift.getKey()).setValue(shift);
     }
 
-    public void insertExcShift(User user, ExceptionShift es) {
-        mydb.child("users").child(user.getFBUser().getUid()).child("excshifts").child(es.getKey()).setValue(es);
+    public void insertExcShift(User user, ExceptionShift _es) {
+        final ExceptionShift es =_es;
+        final DatabaseReference myref=mydb.child("users").child(user.getFBUser().getUid());
+        myref.child("shifts").addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // What type is this????
+                        Map<String,Shift> shiftmap = (Map<String,Shift>)dataSnapshot.getValue();
+                        for (Shift shift : shiftmap.values()) {
+                            if(es.getDay().equals(shift.getDay()) && es.getTime().equals(shift.getTime())) {
+                                // Don't allow a user to say they are going when they are already signed up
+                                if (!es.isGoing())
+                                    myref.child("excshifts").child(es.getKey()).setValue(es);
+                            } else {
+                                // Don't allow a user to say they are not going when they are not already signed up
+                                if(es.isGoing())
+                                    myref.child("excshifts").child(es.getKey()).setValue(es);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                }
+        );
+
+
     }
 /*
     public Vector<Shift> getShiftsByID(int userID)
@@ -84,8 +115,6 @@ public class FBHelper {
         cal.set(Calendar.MILLISECOND, 0);
         return cal.getTime();
     }
-
-
 
         User me=new User(FirebaseAuth.getInstance().getCurrentUser());
         FBHelper myfb = new FBHelper();

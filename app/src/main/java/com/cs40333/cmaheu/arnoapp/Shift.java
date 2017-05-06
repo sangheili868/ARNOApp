@@ -8,6 +8,9 @@ public class Shift {
     String time;
     String day;
 
+    public Shift()
+    {}
+
     public Shift(String day, String time) {
         this.day = day;
         this.time = time;
