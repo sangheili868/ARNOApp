@@ -40,5 +40,16 @@
         <item name="android:textColor">@color/darkblue</item>
     </style>
 
+    <style name="MyTextDetail" parent="MyMaterialTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fadeScrollbars">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">5</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 
 </resources>
