@@ -9,7 +9,6 @@ public class Shift {
     String time;
     String day;
 
-
     public Shift(String day, String time, int userID) {
         this.day = day;
         this.time = time;

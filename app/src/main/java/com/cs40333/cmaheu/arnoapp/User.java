@@ -16,10 +16,19 @@ public class User {
     private Vector<Shift> shifts;
     private Vector<ExceptionShift> excShifts;
 
-    public User(int userID, String username, String password) {
-        this.userID = userID;
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.shifts=new Vector();
+        this.excShifts=new Vector();
+    }
+
+    public User(int userID, String username, String password) {
+        this.userID = userID;   // USER ID FROM SQL
+        this.username = username;
+        this.password = password;
+        this.shifts=new Vector();
+        this.excShifts=new Vector();
     }
 
     public void addShift(Shift shift)
