@@ -11,7 +11,6 @@ public class ExceptionShift extends Shift {
     private Date date;
     private boolean going;
 
-
     public ExceptionShift(Date date, String time, int userID, boolean going) {
         super((new SimpleDateFormat("EEEE")).format(date),time,userID);
         this.date = date;
