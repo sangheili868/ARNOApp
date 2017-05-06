@@ -21,6 +21,7 @@
         </activity>
         <activity android:name="com.cs40333.cmaheu.arnoapp.LoginActivity"/>
         <activity android:name="com.cs40333.cmaheu.arnoapp.DateActivity"/>
+        <activity android:name=".MainMenuActivity"/>
     </application>
 
 </manifest>

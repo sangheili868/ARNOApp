@@ -31,4 +31,8 @@
     <string name="sign_out">Sign Out</string>
     <string name="verify_email">Verify Email</string>
     <string name="auth_failed">Authentication Failed</string>
+    <string name="welcome_to_the_animal_rescue_new_orleans_mobile_app">Welcome to the Animal Rescue New Orleans Mobile App!</string>
+    <string name="calendar">Calendar</string>
+    <string name="sign_out1">Sign Out</string>
+    <string name="main_menu">Main Menu</string>
 </resources>
