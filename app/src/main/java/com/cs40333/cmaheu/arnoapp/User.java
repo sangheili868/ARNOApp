@@ -1,7 +1,10 @@
 package com.cs40333.cmaheu.arnoapp;
 
+import com.google.firebase.auth.FirebaseUser;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Vector;
 
 /**
@@ -10,25 +13,14 @@ import java.util.Vector;
 
 public class User {
 
-    private int userID;
-    private String username;
-    private String password;
+    private FirebaseUser fbuser;
     private Vector<Shift> shifts;
     private Vector<ExceptionShift> excShifts;
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-        this.shifts=new Vector();
-        this.excShifts=new Vector();
-    }
-
-    public User(int userID, String username, String password) {
-        this.userID = userID;   // USER ID FROM SQL
-        this.username = username;
-        this.password = password;
-        this.shifts=new Vector();
-        this.excShifts=new Vector();
+    public User(FirebaseUser _fbuser) {
+        this.fbuser=_fbuser;
+        this.shifts=new Vector<>();
+        this.excShifts=new Vector<>();
     }
 
     public void addShift(Shift shift)
@@ -56,7 +48,7 @@ public class User {
     // Returns true or false if the user is signed up to work on a given day and time
     public boolean isWorking(Date date, String time)
     {
-        String day = (new SimpleDateFormat("EEEE")).format(date); // the day of the week spelled out completely
+        String day = (new SimpleDateFormat("EEEE", Locale.US)).format(date); // the day of the week spelled out completely
         for (ExceptionShift es: this.excShifts)
             if(es.getDate().equals(date) && es.getTime().equals(time))
                 return es.isGoing();
@@ -64,25 +56,12 @@ public class User {
             if(shift.getDay().equals(day) && shift.getTime().equals(time)) return true;
         return false;
     }
-    public boolean checkPassword(String attemptpw) {
-        return this.password.equals(attemptpw);
-    }
 
-    public int getUserID() {
-        return userID;
+    public FirebaseUser getFBUser() {
+        return fbuser;
     }
-    public String getUsername() {
-        return username;
-    }
-    public String getPassword() {return password; }
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public void setPassword(String password) {
-        this.password = password;
+    public void GetFBUser(FirebaseUser _fbuser) {
+        this.fbuser = _fbuser;
     }
 
 
