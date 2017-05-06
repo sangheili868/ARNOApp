@@ -2,6 +2,7 @@ package com.cs40333.cmaheu.arnoapp;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by chris_000 on 4/12/2017.
@@ -12,7 +13,7 @@ public class ExceptionShift extends Shift {
     private boolean going;
 
     public ExceptionShift(Date date, String time, int userID, boolean going) {
-        super((new SimpleDateFormat("EEEE")).format(date),time,userID);
+        super((new SimpleDateFormat("EEEE", Locale.US)).format(date),time,userID);
         this.date = date;
         this.going  = going;
     }
