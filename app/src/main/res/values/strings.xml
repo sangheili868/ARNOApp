@@ -35,4 +35,7 @@
     <string name="calendar">Calendar</string>
     <string name="sign_out1">Sign Out</string>
     <string name="main_menu">Main Menu</string>
+    <string name="account">Account</string>
+    <string name="account_options">Account Options</string>
+    <string name="animals">Animals</string>
 </resources>
