@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
@@ -15,7 +18,6 @@ import java.util.Vector;
  */
 
 public class DateActivity  extends AppCompatActivity {
-
 
     @Override
     public void onCreate(Bundle bundle) {

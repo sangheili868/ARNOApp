@@ -12,8 +12,8 @@ public class ExceptionShift extends Shift {
     private Date date;
     private boolean going;
 
-    public ExceptionShift(Date date, String time, int userID, boolean going) {
-        super((new SimpleDateFormat("EEEE", Locale.US)).format(date),time,userID);
+    public ExceptionShift(Date date, String time, boolean going) {
+        super((new SimpleDateFormat("EEEE", Locale.US)).format(date),time);
         this.date = date;
         this.going  = going;
     }
@@ -24,6 +24,8 @@ public class ExceptionShift extends Shift {
     public boolean isGoing() {
         return going;
     }
+    @Override
+    public String getKey() {return date.toString()+"-"+time+"-"+going;};
     public void setDate(Date date) {
         this.date = date;
     }

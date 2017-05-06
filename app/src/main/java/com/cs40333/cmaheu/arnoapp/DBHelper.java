@@ -13,7 +13,7 @@ import java.util.Vector;
 
 /**
  * Created by chris_000 on 4/12/2017.
- */
+
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -355,7 +355,8 @@ public class DBHelper extends SQLiteOpenHelper {
         int lastMon=mydb.countShiftsForDate(getDate(2017,5,1),"Evening");
         int lastTues=mydb.countShiftsForDate(getDate(2017,5,2),"Evening");
         int nextMon=mydb.countShiftsForDate(getDate(2017,5,8),"Evening");
-*/
+
     // END UNIT TESTS
 
 }
+*/
