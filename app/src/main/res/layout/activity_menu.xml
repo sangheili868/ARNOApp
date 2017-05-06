@@ -32,7 +32,7 @@
         android:textSize="24sp" />
 
     <Button
-        android:text="@string/animals"
+        android:text="@string/animal_gallery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/animalButton"

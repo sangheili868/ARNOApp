@@ -36,9 +36,9 @@ public class ImageAdapter extends BaseAdapter {
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+            imageView.setLayoutParams(new GridView.LayoutParams(500, 500));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8);
+            imageView.setPadding(64, 64, 64, 64);
         } else {
             imageView = (ImageView) convertView;
         }
@@ -48,7 +48,12 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     // references to our images
-    private Integer[] mThumbIds = {
+    private Integer[] mThumbIds = { R.drawable.aiden, R.drawable.amy,
+            R.drawable.andy, R.drawable.babar, R.drawable.chester, R.drawable.eli,
+            R.drawable.fred, R.drawable.jumpingjack, R.drawable.meatloaf,
+            R.drawable.samuel, R.drawable.champ, R.drawable.charcoal,
+            R.drawable.clark, R.drawable.fawn, R.drawable.fiona,
+            R.drawable.gertie, R.drawable.hannah
     };
 }
 

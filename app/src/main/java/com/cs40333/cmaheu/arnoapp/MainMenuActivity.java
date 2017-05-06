@@ -37,7 +37,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
             startActivity(intent);
         }
         else if (i == R.id.animalButton) {
-            Intent intent = new Intent(MainMenuActivity.this, LoginActivity.class);
+            Intent intent = new Intent(MainMenuActivity.this, AnimalActivity.class);
             startActivity(intent);
         }
         }
