@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
+    android:paddingTop="16dp">
+
+    <TextView
+        android:text="@string/main_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/MyMaterialTheme"
+        android:id="@+id/textView2"
+        android:textAlignment="viewStart"
+        android:textSize="30sp"
+        android:textStyle="normal|italic" />
+
+    <Button
+        android:text="@string/calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/calandarButton"
+        style="@style/buttonThemeLight"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="30dp"
+        android:paddingTop="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        android:textSize="24sp" />
+
+    <Button
+        android:text="@string/animals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/animalButton"
+        style="@style/buttonThemeLight"
+        android:layout_marginBottom="30dp"
+        android:paddingTop="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        android:textSize="24sp"
+        android:layout_marginTop="30dp" />
+
+    <Button
+        android:text="@string/sign_out1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/signOutButton"
+        style="@style/buttonThemeLight"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="24sp" />
+</LinearLayout>
