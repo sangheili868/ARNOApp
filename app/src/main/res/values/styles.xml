@@ -40,5 +40,13 @@
         <item name="android:textColor">@color/darkblue</item>
     </style>
 
+    <style name="Widget.CalendarView.Custom" parent="android:Widget.CalendarView">
+        <item name="android:focusedMonthDateColor">@color/white</item>
+        <item name="android:weekNumberColor">@color/gold</item>
+        <item name="android:weekDayTextAppearance">@style/GoldTextTheme</item>
+        <item name="android:dateTextAppearance">@style/DarkTextTheme</item>
+    </style>
+
+
 
 </resources>
