@@ -16,12 +16,13 @@
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="com.cs40333.cmaheu.arnoapp.LoginActivity"/>
         <activity android:name="com.cs40333.cmaheu.arnoapp.DateActivity"/>
+        <activity android:name=".MainMenuActivity"/>
+        <activity android:name=".AnimalActivity"/>
     </application>
 
 </manifest>

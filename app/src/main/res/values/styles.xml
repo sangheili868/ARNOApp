@@ -40,13 +40,27 @@
         <item name="android:textColor">@color/darkblue</item>
     </style>
 
-    <style name="Widget.CalendarView.Custom" parent="android:Widget.CalendarView">
-        <item name="android:focusedMonthDateColor">@color/white</item>
-        <item name="android:weekNumberColor">@color/gold</item>
-        <item name="android:weekDayTextAppearance">@style/GoldTextTheme</item>
-        <item name="android:dateTextAppearance">@style/DarkTextTheme</item>
+    <style name="MyTextDetail" parent="MyMaterialTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fadeScrollbars">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">5</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
+
+    <style name="MenuButton" parent="buttonThemeLight">
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    <item name="android:textSize">24sp</item>
+    </style>
 
 
 </resources>
