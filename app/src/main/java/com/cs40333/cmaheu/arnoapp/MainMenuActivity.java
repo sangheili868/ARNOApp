@@ -40,6 +40,6 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
             Intent intent = new Intent(MainMenuActivity.this, AnimalActivity.class);
             startActivity(intent);
         }
-        }
+    }
 
 }

@@ -29,5 +29,10 @@ public class Shift {
     public void setDay(String day) {
         this.day = day;
     }
+    public boolean equals(Shift other) {
+        return other!=null &&
+                this.day.equals(other.day) &&
+                this.time.equals(other.time);
+    }
 
 }

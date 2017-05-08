@@ -51,7 +51,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:textSize="24sp"
             style="@style/DarkTextTheme"/>
 
@@ -63,18 +63,27 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:textSize="24sp"
             style="@style/DarkTextTheme"/>
 
         <Button
-            android:text="@string/date_morningbtn"
+            android:id="@+id/date_thismorningbutton"
+            style="@style/buttonThemeDark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/date_morningbutton"
             android:layout_margin="10dp"
-            android:textSize="20sp"
-            style="@style/buttonThemeDark"/>
+            android:text="@string/signup_thisday"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/date_everymorningbutton"
+            style="@style/buttonThemeDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/signup_everyweek"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <Space
@@ -97,7 +106,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:textSize="24sp"
             style="@style/DarkTextTheme"/>
 
@@ -109,18 +118,27 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:textSize="24sp"
             style="@style/DarkTextTheme"/>
 
         <Button
-            android:text="@string/date_eveningbtn"
+            android:id="@+id/date_thiseveningbutton"
+            style="@style/buttonThemeDark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/date_eveningbutton"
             android:layout_margin="10dp"
-            android:textSize="20sp"
-            style="@style/buttonThemeDark"/>
+            android:text="@string/signup_thisday"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/date_everyeveningbutton"
+            style="@style/buttonThemeDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/signup_everyweek"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </LinearLayout>

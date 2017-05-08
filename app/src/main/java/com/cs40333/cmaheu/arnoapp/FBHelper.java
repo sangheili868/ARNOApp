@@ -31,6 +31,8 @@ public class FBHelper {
         mydb = FirebaseDatabase.getInstance().getReference();
     }
 
+    public DatabaseReference getDBRef() { return mydb;}
+
     public void clearUsers() {
         mydb.child("users").removeValue();
     }
@@ -43,89 +45,78 @@ public class FBHelper {
     public void insertUser(User user) {
             mydb.child("users").child(user.getFBUser().getUid()).setValue(user);
             for (Shift shift: user.getShifts()) this.insertShift(user,shift);
-            for (ExceptionShift es: user.getExcShifts()) this.insertExcShift(user,es);
+            //for (ExceptionShift es: user.getExcShifts()) this.insertExcShift(user,es);
     }
 
     public void insertShift(User user, Shift shift) {
         mydb.child("users").child(user.getFBUser().getUid()).child("shifts").child(shift.getKey()).setValue(shift);
     }
 
-    public void insertExcShift(User user, ExceptionShift _es) {
-        final ExceptionShift es =_es;
-        final DatabaseReference myref=mydb.child("users").child(user.getFBUser().getUid());
-        myref.child("shifts").addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // What type is this????
-                        Map<String,Shift> shiftmap = (Map<String,Shift>)dataSnapshot.getValue();
-                        for (Shift shift : shiftmap.values()) {
-                            if(es.getDay().equals(shift.getDay()) && es.getTime().equals(shift.getTime())) {
-                                // Don't allow a user to say they are going when they are already signed up
-                                if (!es.isGoing())
-                                    myref.child("excshifts").child(es.getKey()).setValue(es);
-                            } else {
-                                // Don't allow a user to say they are not going when they are not already signed up
-                                if(es.isGoing())
-                                    myref.child("excshifts").child(es.getKey()).setValue(es);
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                }
-        );
-
-
+    public void removeShift(User user, Shift shift) {
+        mydb.child("users").child(user.getFBUser().getUid()).child("shifts").child(shift.getKey()).removeValue();
     }
-/*
-    public Vector<Shift> getShiftsByID(int userID)
-    {
-        Vector<Shift> myShifts = new Vector<>();
 
-        ValueEventListener postListener = new ValueEventListener() {
+    // Return a vector containing the shifts this user has signed up for
+    // To use:
+    /*
+        ValueEventListener shiftListener = new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                myShifts.add(dataSnapshot.getValue(Shift.class));
+            public void onDataChange(DataSnapshot DS) {
+                // Get the user's shifts
+                Vector<Shift> myShifts=myfb.getUserShifts(DS);
+                // Do things with the shifts (i.e. update UI)
+                ...
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("Get Shifts Error");
-            }
+            public void onCancelled(DatabaseError databaseError) {}
         };
-        mydb.addValueEventListener(postListener);
+        myfb.getDBRef().child("users").child(me.getFBUser().getUid()).child("shifts").addValueEventListener(shiftListener);
+        mShiftListener=shiftListener;
+     */
+    // In that class, add this function:
+    /*
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        // Remove post value event listener
+        if (mShiftListener != null) {
+            myfb.getDBRef().removeEventListener(mShiftListener);
+        }
+    }
+
+     */
+    public Vector<Shift> getUserShifts(DataSnapshot DS) {
+        Vector<Shift> myShifts=new Vector<>();
+        for(DataSnapshot thisShift:DS.getChildren()){
+            Shift myShift=new Shift();
+            for(DataSnapshot thisChild:thisShift.getChildren()){
+                if(thisChild.getKey().equals("time"))
+                    myShift.setTime(String.valueOf(thisChild.getValue()));
+                else if(thisChild.getKey().equals("day"))
+                    myShift.setDay(String.valueOf(thisChild.getValue()));
+            }
+            myShifts.add(myShift);
+        }
         return myShifts;
     }
-*/
 
-    // Firebase Unit Tests
-/*
-    public static Date makeDate(int year, int month, int day) {
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, year);
-        cal.set(Calendar.MONTH, month-1);
-        cal.set(Calendar.DAY_OF_MONTH, day);
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        return cal.getTime();
+    public int getVolunteersforShift(DataSnapshot DS, Date mydate, String mytime) {
+        int count=0;
+        String thistime="",thisday="";
+        for(DataSnapshot thisUser:DS.getChildren()) {
+            for (DataSnapshot thisShift : thisUser.child("shifts").getChildren()) {
+                for (DataSnapshot thisChild : thisShift.getChildren()) {
+                    if (thisChild.getKey().equals("time"))
+                        thistime=String.valueOf(thisChild.getValue());
+                    else if (thisChild.getKey().equals("day"))
+                        thisday=String.valueOf(thisChild.getValue());
+                }
+                if(thistime.equals(mytime) && thisday.equals(getDayOfWeek(mydate)))
+                    count++;
+            }
+        }
+
+        return count;
     }
-
-        User me=new User(FirebaseAuth.getInstance().getCurrentUser());
-        FBHelper myfb = new FBHelper();
-        //myfb.insertUser(me);
-        myfb.insertShift(me,new Shift("Monday","Evening"));
-        myfb.insertShift(me,new Shift("Monday","Morning"));
-        myfb.insertShift(me,new Shift("Tuesday","Evening"));
-        myfb.insertExcShift(me,new ExceptionShift(makeDate(2017,5,1),"Evening",false));
-        myfb.insertExcShift(me,new ExceptionShift(makeDate(2017,5,3),"Evening",true));
-
-*/
-    // END UNIT TESTS
-
 }
