@@ -43,28 +43,28 @@ public class FBHelper {
         return (new SimpleDateFormat("EEEE", Locale.US)).format(mydate);
     }
 
-    public void insertUser(User user) {
-            mydb.child("users").child(user.getFBUser().getUid()).setValue(user);
-            for (Shift shift: user.getShifts()) this.insertShift(user,shift);
+    public void insertUser(FirebaseUser user) {
+            mydb.child("users").child(user.getUid()).setValue(user);
+            //for (Shift shift: user.getShifts()) this.insertShift(user,shift);
             //for (ExceptionShift es: user.getExcShifts()) this.insertExcShift(user,es);
     }
 
-    public void insertShift(User user, Shift shift) {
-        mydb.child("users").child(user.getFBUser().getUid()).child("shifts").child(shift.getKey()).setValue(shift);
+    public void insertShift(FirebaseUser user, Shift shift) {
+        mydb.child("users").child(user.getUid()).child("shifts").child(shift.getKey()).setValue(shift);
         removeExcShiftsForShift(user,shift);
     }
 
-    public void removeShift(User user, Shift shift) {
-        mydb.child("users").child(user.getFBUser().getUid()).child("shifts").child(shift.getKey()).removeValue();
+    public void removeShift(FirebaseUser user, Shift shift) {
+        mydb.child("users").child(user.getUid()).child("shifts").child(shift.getKey()).removeValue();
         removeExcShiftsForShift(user,shift);
     }
 
-    public void insertExcShift(User user, ExceptionShift es) {
-        mydb.child("users").child(user.getFBUser().getUid()).child("excshifts").child(es.getKey()).setValue(es);
+    public void insertExcShift(FirebaseUser user, ExceptionShift es) {
+        mydb.child("users").child(user.getUid()).child("excshifts").child(es.getKey()).setValue(es);
     }
 
-    public void removeExcShift(User user, ExceptionShift es) {
-        mydb.child("users").child(user.getFBUser().getUid()).child("excshifts").child(es.getKey()).removeValue();
+    public void removeExcShift(FirebaseUser user, ExceptionShift es) {
+        mydb.child("users").child(user.getUid()).child("excshifts").child(es.getKey()).removeValue();
     }
 
     // To use get functions:
@@ -137,7 +137,7 @@ public class FBHelper {
 
     // Remove all exception shifts that would overlap with a regular shift
     // To use:
-    public ValueEventListener removeExcShiftsForShift(User user, final Shift shift) {
+    public ValueEventListener removeExcShiftsForShift(FirebaseUser user, final Shift shift) {
         ValueEventListener shiftListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot DS) {
@@ -161,7 +161,7 @@ public class FBHelper {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         };
-        mydb.child("users").child(user.getFBUser().getUid()).addListenerForSingleValueEvent(shiftListener);
+        mydb.child("users").child(user.getUid()).addListenerForSingleValueEvent(shiftListener);
         return shiftListener;
     }
 

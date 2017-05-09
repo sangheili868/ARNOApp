@@ -80,6 +80,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            FBHelper myfb = new FBHelper();
+                            myfb.insertUser(user);
                             signIn(email,password);
                         } else {
                             // If sign in fails, display a message to the user.

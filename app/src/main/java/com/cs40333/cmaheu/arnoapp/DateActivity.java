@@ -29,7 +29,7 @@ import java.util.Vector;
 
 public class DateActivity  extends AppCompatActivity implements View.OnClickListener{
     FBHelper myfb;
-    User me;
+    FirebaseUser me;
     Date thisDate;
     private ValueEventListener mShiftListener;
     private ValueEventListener mUserListener;
@@ -62,7 +62,7 @@ public class DateActivity  extends AppCompatActivity implements View.OnClickList
         super.onCreate(bundle);
         setContentView(R.layout.activity_date);
 
-        me=new User(FirebaseAuth.getInstance().getCurrentUser());
+        me=FirebaseAuth.getInstance().getCurrentUser();
         myfb = new FBHelper();
         int eveVolunteers=0;
         thisDate=makeDate(2017,2,27);
@@ -161,7 +161,7 @@ public class DateActivity  extends AppCompatActivity implements View.OnClickList
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         };
-        myfb.getDBRef().child("users").child(me.getFBUser().getUid()).addValueEventListener(shiftListener);
+        myfb.getDBRef().child("users").child(me.getUid()).addValueEventListener(shiftListener);
         mShiftListener=shiftListener;
 
 

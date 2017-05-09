@@ -11,7 +11,7 @@ import java.util.Vector;
  * Created by chris_000 on 4/12/2017.
  */
 
-public class User {
+/*public class User {
 
     private FirebaseUser fbuser;
     private Vector<Shift> shifts;
@@ -65,4 +65,4 @@ public class User {
     }
 
 
-}
+}*/
