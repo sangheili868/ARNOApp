@@ -24,6 +24,7 @@
     <string name="signup_everyweek">Sign up for this shift every week.</string>
     <string name="signout_thisday">I can\'t make this shift just this day.</string>
     <string name="signout_everyweek">I can\'t make this shift every week.</string>
+    <string name="volunter_list">View volunteers signed up for this shift.</string>
     <string name="create_account">Create Account</string>
     <string name="currently_signed_out">Currently Signed Out</string>
     <string name="email">Email</string>
@@ -41,4 +42,5 @@
     <string name="account_options">Account Options</string>
     <string name="animals">Animals</string>
     <string name="animal_gallery">Animal Gallery</string>
+    <string name="volunteer_name">Volunteer Name</string>
 </resources>

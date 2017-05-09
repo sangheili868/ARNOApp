@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/date_backbutton"
+            style="@style/buttonThemeLight"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/date_back"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/date_monthday"
+            style="@style/GoldTextTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/date_month_day"
+            android:textAlignment="center"
+            android:textSize="48sp"
+            android:textStyle="normal|bold" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_volunteers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

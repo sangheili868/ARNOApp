@@ -12,6 +12,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
@@ -80,7 +81,7 @@ public class FBHelper {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         };
-        myfb.getDBRef().child("users").child(me.getFBUser().getUid()).addValueEventListener(shiftListener);
+        myfb.getDBRef().child("users").child(me.getUid()).addValueEventListener(shiftListener);
         mShiftListener=shiftListener;
      */
     // In that class, add this function:
@@ -98,7 +99,7 @@ public class FBHelper {
      */
 
     // Return a vector containing the shifts this user has signed up for
-    //myfb.getDBRef().child("users").child(me.getFBUser().getUid()).addValueEventListener(shiftListener);
+    //myfb.getDBRef().child("users").child(me.getUid()).addValueEventListener(shiftListener);
     public Vector<Shift> getUserShifts(DataSnapshot DS) {
         Vector<Shift> myShifts=new Vector<>();
         for(DataSnapshot thisShift:DS.child("shifts").getChildren()){
@@ -115,7 +116,7 @@ public class FBHelper {
     }
 
     // Return a vector containing the exception shifts this user has signed up for
-    // myfb.getDBRef().child("users").child(me.getFBUser().getUid()).addValueEventListener(shiftListener);
+    // myfb.getDBRef().child("users").child(me.getUid()).addValueEventListener(shiftListener);
     public Vector<ExceptionShift> getUserExcShifts(DataSnapshot DS) {
         Vector<ExceptionShift> myExcShifts=new Vector<>();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
@@ -201,5 +202,54 @@ public class FBHelper {
         }
 
         return count;
+    }
+
+    //myfb.getDBRef().child("users").addValueEventListener(shiftListener);
+    public ArrayList<String> getUsers(DataSnapshot DS, Date mydate, String mytime) {
+        ArrayList<String> names = new ArrayList<>();
+        String thisname="";
+        String thistime="",thisday="";
+        Date thisdate=new Date();
+        boolean going=false;
+        for(DataSnapshot thisUser:DS.getChildren()) {
+            for (DataSnapshot thisChild : thisUser.getChildren())
+                if(thisChild.getKey().equals("email"))
+                    thisname=String.valueOf(thisChild.getValue());
+            for (DataSnapshot thisShift : thisUser.child("shifts").getChildren()) {
+                for (DataSnapshot thisChild : thisShift.getChildren()) {
+                    if (thisChild.getKey().equals("time"))
+                        thistime=String.valueOf(thisChild.getValue());
+                    else if (thisChild.getKey().equals("day"))
+                        thisday=String.valueOf(thisChild.getValue());
+                }
+                if(thistime.equals(mytime) && thisday.equals(getDayOfWeek(mydate)))
+                    names.add(thisname);
+            }
+            for (DataSnapshot thisShift : thisUser.child("excshifts").getChildren()) {
+                for (DataSnapshot thisChild : thisShift.getChildren()) {
+                    if (thisChild.getKey().equals("time"))
+                        thistime=String.valueOf(thisChild.getValue());
+                    else if(thisChild.getKey().equals("date")) {
+                        thisdate=thisChild.getValue(Date.class);
+                    }
+                    else if(thisChild.getKey().equals("going"))
+                        going=Boolean.parseBoolean(String.valueOf(thisChild.getValue()));
+                }
+                if(thistime.equals(mytime) && thisdate.equals(mydate))
+                    if(going) names.add(thisname);
+                    else names.remove(thisname);
+            }
+        }
+
+        return names;
+    }
+
+    //myfb.getDBRef().child("users").child(me.getUid()).addListenerForSingleValueEvent(shiftListener);
+    public boolean isLead(DataSnapshot DS)
+    {
+        for (DataSnapshot thisChild : DS.getChildren())
+            if (thisChild.getKey().equals("isLead") && Boolean.parseBoolean(String.valueOf(thisChild.getValue())))
+                return true;
+        return false;
     }
 }
