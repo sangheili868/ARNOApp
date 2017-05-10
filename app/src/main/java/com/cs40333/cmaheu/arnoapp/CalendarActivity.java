@@ -66,5 +66,7 @@ public class CalendarActivity extends AppCompatActivity{
                 myfb.getDBRef().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addListenerForSingleValueEvent(userListener);
             }
         });
+
+
     }
 }
