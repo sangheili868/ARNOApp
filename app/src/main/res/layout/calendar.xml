@@ -3,10 +3,11 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.squareup.timessquare.CalendarPickerView
-        android:id="@+id/calendar_view"
+    <CalendarView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:id="@+id/calendarview"
+        style="@style/calendartheme">
 
+    </CalendarView>
 </LinearLayout>

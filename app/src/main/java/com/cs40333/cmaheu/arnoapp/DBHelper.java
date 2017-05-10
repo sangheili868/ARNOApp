@@ -1,3 +1,4 @@
+/*
 package com.cs40333.cmaheu.arnoapp;
 
 import android.content.ContentValues;
@@ -11,8 +12,10 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Vector;
 
-/**
- * Created by chris_000 on 4/12/2017.
+
+ */
+/* Created by chris_000 on 4/12/2017.*//*
+
 
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -331,6 +334,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // SQLite Unit Tests
+*/
 /*
     public static Date getDate(int year, int month, int day) {
         Calendar cal = Calendar.getInstance();
