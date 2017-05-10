@@ -12,7 +12,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/shiftText"
         style="@style/DarkTextTheme"
-        android:textAlignment="textStart" />
+        android:textAlignment="textStart"
+        android:layout_marginStart="6dp"
+        android:layout_marginBottom="6dp"
+        android:paddingBottom="8dp"
+        android:paddingStart="8dp"
+        android:paddingTop="8dp"
+        tools:ignore="RtlSymmetry" />
 
     <TextView
         android:text="@string/sample_number_of_volunteers"
@@ -20,5 +26,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/volunteerText"
         style="@style/DarkTextTheme"
-        android:textAlignment="textEnd" />
+        android:textAlignment="textEnd"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="6dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="8dp"
+        tools:ignore="RtlSymmetry" />
 </LinearLayout>
