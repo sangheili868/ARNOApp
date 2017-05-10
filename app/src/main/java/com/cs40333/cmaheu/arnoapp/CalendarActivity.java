@@ -24,7 +24,7 @@ import java.util.Date;
  * Created by eakla on 5/9/2017.
  */
 
-public class CalendarActivity extends AppCompatActivity{
+public class CalendarActivity extends AppCompatActivity implements View.OnClickListener{
     FBHelper myfb;
     private ValueEventListener mUserListener;
 
@@ -44,6 +44,8 @@ public class CalendarActivity extends AppCompatActivity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar);
+
+        findViewById(R.id.calendar_backbutton).setOnClickListener(this);
 
         CalendarView calendarView=(CalendarView) findViewById(R.id.calendarview);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -96,6 +98,15 @@ public class CalendarActivity extends AppCompatActivity{
         // Remove event listeners
         if (mUserListener != null) {
             myfb.getDBRef().removeEventListener(mUserListener);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.calendar_backbutton) {
+            // Return to calendar
+            Intent intent = new Intent(CalendarActivity.this, MainMenuActivity.class);
+            startActivity(intent);
         }
     }
 }
