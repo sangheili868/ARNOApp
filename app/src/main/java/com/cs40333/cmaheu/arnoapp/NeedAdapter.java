@@ -45,7 +45,7 @@ public class NeedAdapter extends ArrayAdapter<Need> {
         String mydate=(new SimpleDateFormat("MMM d")).format(thisneed.getDay()).toString();
 
         needDate.setText(dayofweek+" "+thisneed.getTime()+", "+mydate);
-        needCount.setText(String.valueOf(thisneed.getVolunteers()));
+        needCount.setText(String.valueOf("Volunteers: "+thisneed.getVolunteers()));
         mornLay.setBackgroundColor(getBGColor(thisneed.getVolunteers()));
 
         return convertView;
