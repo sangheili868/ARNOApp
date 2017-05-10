@@ -263,9 +263,12 @@ public class FBHelper {
         return false;
     }
 
-    public Vector<Need> getNeedsforWeek(DataSnapshot DS, Date thisDate) {
+    //myfb.getDBRef().child("users").addValueEventListener(shiftListener);
+    public Vector<Need> getNeedsforWeek(DataSnapshot DS) {
         Vector<Need> needs = new Vector();
         int volCount=0;
+        Date thisDate = Calendar.getInstance().getTime();
+
         for(int i=0; i<8; i++)
         {
             volCount=getVolunteersforShift(DS,thisDate,"Morning");
