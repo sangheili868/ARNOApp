@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -14,8 +15,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Vector;
 
 /**
@@ -37,6 +40,10 @@ public class VolunteerListActivity extends AppCompatActivity  implements View.On
         final Date mydate = new Date();
         mydate.setTime(getIntent().getLongExtra("date", -1));
         final String mytime = getIntent().getStringExtra("time");
+
+        String dateText=new SimpleDateFormat("MMMM dd", Locale.US).format(mydate);
+        TextView monthDay = (TextView) findViewById(R.id.date_monthday);
+        monthDay.setText(dateText);
 
         ValueEventListener shiftListener = new ValueEventListener() {
             @Override

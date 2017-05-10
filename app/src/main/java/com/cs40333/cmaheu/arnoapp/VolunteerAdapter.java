@@ -1,6 +1,6 @@
 package com.cs40333.cmaheu.arnoapp;
 
-import android.content.Context;
+/*import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by chris_000 on 5/9/2017.
- */
 
 public class VolunteerAdapter extends ArrayAdapter<String> {
     public VolunteerAdapter(Context context, ArrayList<String> volunteers) {
@@ -32,3 +29,4 @@ public class VolunteerAdapter extends ArrayAdapter<String> {
         return convertView;
     }
 }
+*/
