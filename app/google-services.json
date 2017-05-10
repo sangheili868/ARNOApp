@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "413847920585",
+    "firebase_url": "https://arnoapp-e68cd.firebaseio.com",
+    "project_id": "arnoapp-e68cd",
+    "storage_bucket": "arnoapp-e68cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413847920585:android:7be20af9cb6a3380",
+        "android_client_info": {
+          "package_name": "com.cs40333.cmaheu.arnoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413847920585-s3f1rojvh5qchdguc8j8iq3gr3ofc4dj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cs40333.cmaheu.arnoapp",
+            "certificate_hash": "12ad6152b9d645533167cb29b6f8cb4806513bce"
+          }
+        },
+        {
+          "client_id": "413847920585-7b97hsrqc8qpm9glukvq8ehv4bmclskn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cs40333.cmaheu.arnoapp",
+            "certificate_hash": "259d31c78f1eca0159d61e9dbc1137259f745662"
+          }
+        },
+        {
+          "client_id": "413847920585-2va2q9gmuh8nediguckjf4n42m4r69lb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW1wJALDFi-dscUavp0n5XhvXy4jEnptY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413847920585-2va2q9gmuh8nediguckjf4n42m4r69lb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
