@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -264,8 +265,8 @@ public class FBHelper {
     }
 
     //myfb.getDBRef().child("users").addValueEventListener(shiftListener);
-    public Vector<Need> getNeedsforWeek(DataSnapshot DS) {
-        Vector<Need> needs = new Vector();
+    public ArrayList<Need> getNeedsforWeek(DataSnapshot DS) {
+        ArrayList<Need> needs = new ArrayList<>();
         int volCount=0;
         Date thisDate = Calendar.getInstance().getTime();
 

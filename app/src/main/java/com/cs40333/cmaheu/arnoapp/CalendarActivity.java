@@ -2,9 +2,13 @@ package com.cs40333.cmaheu.arnoapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -12,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -20,6 +25,8 @@ import java.util.Date;
  */
 
 public class CalendarActivity extends AppCompatActivity{
+    FBHelper myfb;
+    private ValueEventListener mUserListener;
 
     public static Date makeDate(int year, int month, int day) {
         Calendar cal = Calendar.getInstance();
@@ -67,6 +74,28 @@ public class CalendarActivity extends AppCompatActivity{
             }
         });
 
+        myfb = new FBHelper();
+        ValueEventListener userListener = new ValueEventListener() {
 
+            @Override
+            public void onDataChange(DataSnapshot DS) {
+                ArrayList<Need> needarray = myfb.getNeedsforWeek(DS);
+                NeedAdapter adapter = new NeedAdapter(CalendarActivity.this, needarray);
+                ListView listView = (ListView) findViewById(R.id.needlistview);
+                listView.setAdapter(adapter);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+        myfb.getDBRef().child("users").addValueEventListener(userListener);
+        mUserListener=userListener;
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        // Remove event listeners
+        if (mUserListener != null) {
+            myfb.getDBRef().removeEventListener(mUserListener);
+        }
     }
 }
