@@ -12,11 +12,26 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by eakla on 5/9/2017.
  */
 
 public class CalendarActivity extends AppCompatActivity{
+
+    public static Date makeDate(int year, int month, int day) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month-1);
+        cal.set(Calendar.DAY_OF_MONTH, day);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,9 +44,9 @@ public class CalendarActivity extends AppCompatActivity{
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month,
                                             int dayOfMonth) {
-                Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
 
                 final FBHelper myfb = new FBHelper();
+                final Date mydate = makeDate(year,month+1,dayOfMonth);
                 ValueEventListener userListener = new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot DS) {
@@ -40,6 +55,7 @@ public class CalendarActivity extends AppCompatActivity{
                             intent = new Intent(CalendarActivity.this, LeadDateActivity.class);
                         else
                             intent = new Intent(CalendarActivity.this, DateActivity.class);
+                        intent.putExtra("date", mydate.getTime());
                         startActivity(intent);
                     }
 

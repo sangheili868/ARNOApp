@@ -29,6 +29,7 @@ public class VolunteerListActivity extends AppCompatActivity  implements View.On
     ValueEventListener mShiftListener;
     FBHelper myfb;
     FirebaseUser me;
+    Date mydate;
     @Override
     public void onCreate(Bundle bundle) {
 
@@ -37,7 +38,7 @@ public class VolunteerListActivity extends AppCompatActivity  implements View.On
         me= FirebaseAuth.getInstance().getCurrentUser();
         myfb = new FBHelper();
 
-        final Date mydate = new Date();
+        mydate = new Date();
         mydate.setTime(getIntent().getLongExtra("date", -1));
         final String mytime = getIntent().getStringExtra("time");
 
@@ -77,6 +78,7 @@ public class VolunteerListActivity extends AppCompatActivity  implements View.On
         if (i == R.id.date_backbutton) {
             // Return to Date ACtivity
             Intent intent = new Intent(VolunteerListActivity.this, LeadDateActivity.class);
+            intent.putExtra("date", mydate.getTime());
             startActivity(intent);
         }
     }

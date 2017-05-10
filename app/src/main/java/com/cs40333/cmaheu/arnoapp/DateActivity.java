@@ -64,8 +64,8 @@ public class DateActivity  extends AppCompatActivity implements View.OnClickList
 
         me=FirebaseAuth.getInstance().getCurrentUser();
         myfb = new FBHelper();
-        int eveVolunteers=0;
-        thisDate=makeDate(2017,2,27);
+        thisDate = new Date();
+        thisDate.setTime(getIntent().getLongExtra("date", -1));
         String dateText=new SimpleDateFormat("MMMM dd", Locale.US).format(thisDate);
         TextView monthDay = (TextView) findViewById(R.id.date_monthday);
         monthDay.setText(dateText);
@@ -189,8 +189,8 @@ public class DateActivity  extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.date_backbutton) {
-            // Return to Main Menu
-            Intent intent = new Intent(DateActivity.this, MainMenuActivity.class);
+            // Return to calendar
+            Intent intent = new Intent(DateActivity.this, CalendarActivity.class);
             startActivity(intent);
         } else if(i == R.id.date_everymorningbutton) {
             // Either sign up for or sign out of this morning shift every week
