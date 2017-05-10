@@ -43,4 +43,6 @@
     <string name="animals">Animals</string>
     <string name="animal_gallery">Animal Gallery</string>
     <string name="volunteer_name">Volunteer Name</string>
+    <string name="example_date">Example Date</string>
+    <string name="sample_number_of_volunteers">Sample number of Volunteers</string>
 </resources>
