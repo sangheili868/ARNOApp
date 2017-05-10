@@ -267,8 +267,13 @@ public class FBHelper {
     //myfb.getDBRef().child("users").addValueEventListener(shiftListener);
     public ArrayList<Need> getNeedsforWeek(DataSnapshot DS) {
         ArrayList<Need> needs = new ArrayList<>();
-        int volCount=0;
-        Date thisDate = Calendar.getInstance().getTime();
+        int volCount;
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND,0);
+        Date thisDate = calendar.getTime();
 
         for(int i=0; i<8; i++)
         {
@@ -276,7 +281,7 @@ public class FBHelper {
             if(volCount<6) needs.add(new Need(thisDate,"Morning",volCount));
             volCount=getVolunteersforShift(DS,thisDate,"Evening");
             if(volCount<6) needs.add(new Need(thisDate,"Evening",volCount));
-            addDays(thisDate,1);
+            thisDate=addDays(thisDate,1);
         }
         return needs;
     }

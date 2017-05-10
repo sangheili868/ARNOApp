@@ -41,11 +41,11 @@ public class NeedAdapter extends ArrayAdapter<Need> {
         TextView needCount = (TextView) convertView.findViewById(R.id.volunteerText);
         LinearLayout mornLay = (LinearLayout) convertView.findViewById(R.id.needLayout);
 
-        String dayofweek=(new SimpleDateFormat("EEEE", Locale.US)).format(thisneed.getDay());
-        String mydate=android.text.format.DateFormat.format("MM ww", thisneed.getDay()).toString();
+        String dayofweek=(new SimpleDateFormat("EEE", Locale.US)).format(thisneed.getDay());
+        String mydate=(new SimpleDateFormat("MMM d")).format(thisneed.getDay()).toString();
 
-        needDate.setText(dayofweek+" "+thisneed.getTime()+" "+mydate);
-        needCount.setText(thisneed.getVolunteers());
+        needDate.setText(dayofweek+" "+thisneed.getTime()+", "+mydate);
+        needCount.setText(String.valueOf(thisneed.getVolunteers()));
         mornLay.setBackgroundColor(getBGColor(thisneed.getVolunteers()));
 
         return convertView;
