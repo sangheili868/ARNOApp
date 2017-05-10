@@ -13,6 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
@@ -245,6 +246,14 @@ public class FBHelper {
         return names;
     }
 
+    public static Date addDays(Date date, int days)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, days); //minus number would decrement the days
+        return cal.getTime();
+    }
+
     //myfb.getDBRef().child("users").child(me.getUid()).addListenerForSingleValueEvent(shiftListener);
     public boolean isLead(DataSnapshot DS)
     {
@@ -252,5 +261,19 @@ public class FBHelper {
             if (thisChild.getKey().equals("isLead") && Boolean.parseBoolean(String.valueOf(thisChild.getValue())))
                 return true;
         return false;
+    }
+
+    public Vector<Need> getNeedsforWeek(DataSnapshot DS, Date thisDate) {
+        Vector<Need> needs = new Vector();
+        int volCount=0;
+        for(int i=0; i<8; i++)
+        {
+            volCount=getVolunteersforShift(DS,thisDate,"Morning");
+            if(volCount<6) needs.add(new Need(thisDate,"Morning",volCount));
+            volCount=getVolunteersforShift(DS,thisDate,"Evening");
+            if(volCount<6) needs.add(new Need(thisDate,"Evening",volCount));
+            addDays(thisDate,1);
+        }
+        return needs;
     }
 }

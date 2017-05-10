@@ -34,18 +34,6 @@ public class DateActivity  extends AppCompatActivity implements View.OnClickList
     private ValueEventListener mShiftListener;
     private ValueEventListener mUserListener;
 
-    public static Date makeDate(int year, int month, int day) {
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, year);
-        cal.set(Calendar.MONTH, month-1);
-        cal.set(Calendar.DAY_OF_MONTH, day);
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        return cal.getTime();
-    }
-
     public int getBGColor(int numVols) {
 
         if(numVols< 4)
