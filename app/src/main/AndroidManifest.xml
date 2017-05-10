@@ -25,6 +25,7 @@
         <activity android:name="com.cs40333.cmaheu.arnoapp.VolunteerListActivity"/>
         <activity android:name=".MainMenuActivity"/>
         <activity android:name=".AnimalActivity"/>
+        <activity android:name=".CalendarActivity"/>
     </application>
 
 </manifest>
