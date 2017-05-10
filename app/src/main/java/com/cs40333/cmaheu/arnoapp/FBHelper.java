@@ -45,9 +45,10 @@ public class FBHelper {
     }
 
     public void insertUser(FirebaseUser user) {
-            mydb.child("users").child(user.getUid()).setValue(user);
-            //for (Shift shift: user.getShifts()) this.insertShift(user,shift);
-            //for (ExceptionShift es: user.getExcShifts()) this.insertExcShift(user,es);
+        mydb.child("users").child(user.getUid()).setValue(user);
+        mydb.child("users").child(user.getUid()).child("isLead").setValue("false");
+        //for (Shift shift: user.getShifts()) this.insertShift(user,shift);
+        //for (ExceptionShift es: user.getExcShifts()) this.insertExcShift(user,es);
     }
 
     public void insertShift(FirebaseUser user, Shift shift) {

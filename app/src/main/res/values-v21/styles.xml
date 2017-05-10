@@ -1,0 +1,12 @@
+<resources>
+
+
+    <style name="MyMaterialTheme" parent="SuperMaterialTheme">
+        <item name="android:windowBackground">@color/darkblue</item>
+        <item name="android:colorBackground">@color/darkblue</item>
+        <item name="android:colorPrimary">@color/gold</item>
+        <item name="android:textColorSecondary">@color/darkblue</item>
+        <item name="android:textColor">@color/gold</item>
+        <item name="android:colorButtonNormal">@color/black</item>
+    </style>
+</resources>
